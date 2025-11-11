@@ -1,41 +1,26 @@
-{{--
-@extends('layouts.app')
-
-@section('title', 'Books')
-
-@section('content')
-    <div class="card">
-        <div class="card-body">
-            <h4>Books</h4>
-
-            <table class="table">
-                <thead><tr><th>Title</th><th>Author</th><th>Genre</th></tr></thead>
-                <tbody>
-                    @forelse($books as $book)
-                    <tr>
-                        <td><a href="{{ route('books.show', $book) }}">{{ $book->title }}</a></td>
-                        <td>{{ $book->author->name ?? 'Unknown' }}</td>
-                        <td>{{ $book->genre->name ?? 'Unknown' }}</td>
-                    </tr>
-                    @empty
-                    <tr><td colspan="3">No books yet</td></tr>
-                    @endforelse
-                </tbody>
-            </table>
-
-            {{ $books->links() }}
-
-        </div>
-    </div>
-     --}}
-
+@vite('resources/css/app.css')
 <html>
+    <head>
+        <title>Books</title>
+    </head>
     <body>
+        <div class="elements">
+            <p class="titles">Title:</p>
+            <p class="authors">Author:</p>
+            <p class="genres">Genre:</p>
+        </div>
+
         @forelse($books as $book)
-            <div>
-                {{ $book->title }}
-                (Author: {{ $book->author->name ?? 'Unknown' }})
-                (Genre: {{ $book->genre->name ?? 'Unknown' }})
+            <div class="elements">
+                <div class="titles">
+                    {{ $book->title }}
+                </div>
+                <div class="authors">
+                    {{ $book->author->name ?? 'Unknown' }}
+                </div>
+                <div class="genres">
+                    {{ $book->genre->name ?? 'Unknown' }}
+                </div>
             </div>
         @empty
             <div>No books found.</div>
