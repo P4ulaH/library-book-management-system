@@ -1,9 +1,192 @@
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+/* testindex css */
 
 .elements {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
+
+/* end of testindex css */
+
+
+/* Sidebar css */
+
+body{
+    margin: 0;
+    font-family: system-ui, sans-serif;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 240px;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+}
+
+/* Menu items container */
+.menu-item {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Section header (clickable title) */
+.menu-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 6px 0;
+    color: #333;
+    transition: all 0.2s;
+}
+
+/* icon inside header */
+.menu-header i {
+    transition: transform 0.2s, font-size 0.2s, margin 0.2s;
+}
+
+/* Active (expanded) section: stack icon above text */
+.menu-item.active .menu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+/* make the icon sit above the header text when active */
+.menu-item.active .menu-header i {
+    font-size: 1.9rem;
+    transform: none;
+}
+
+.menu-header i {
+    font-weight: 500;
+}
+
+/* Collapsed content */
+.menu-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+/* Add button */
+.add-btn {
+    display: inline-block;
+    background-color: #E6E6E6;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+    margin: 6px 0 12px;
+    transition: all 0.2s;
+}
+.add-btn:hover {
+    background-color: #ddd;
+    transform: scale(1.1) translateX(4px);
+}
+
+/* Active (expanded) section */
+.menu-item.active .menu-header {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.menu-item.active .menu-content {
+  max-height: 200px; /* enough space for button(s) */
+}
+
+/* end of sidebar css */
+
+
+/* main content area css */
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+    padding: 3rem;
+    min-width: 0;
+}
+
+.pagination-container .pagination {
+    margin-left: 1rem;
+}
+
+table {
+    width: 100%;
+}
+
+tr{
+    display: table-row;
+}
+
+.table-actions-col {
+    width: 80px;
+    min-width: 70px;
+    max-width: 100px;
+
+}
+
+.action_column {
+    text-align: right;
+}
+
+table th,
+table td {
+    vertical-align: middle;
+}
+
+table th {
+    font-size: 1.5rem;
+
+}
+
+table td, table th {
+    border: none;
+}
+
+table td, table th {
+    border-left: #bebebe 2px solid;
+}
+
+table tr td a {
+    margin: 10px;
+}
+
+.edit {
+    color: rgb(58, 163, 2);
+}
+
+.delete {
+    color: rgb(218, 10, 10);
+}
+
+.edit i, .delete i {
+    display: inline-block;
+    transition: transform 0.1s;
+}
+
+.edit i:hover, .delete i:hover {
+    opacity: 70%;
+    transform: scale(1.3);
+}
+
+table thead th {
+    color: #333333 !important;
+}
+/* end of main content area css */

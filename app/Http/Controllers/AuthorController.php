@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -11,7 +12,9 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $authors = Author::paginate(15);
+
+        return view('authors.index', compact('authors'));
     }
 
     /**
@@ -19,7 +22,7 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.create');
     }
 
     /**
