@@ -14,7 +14,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book::with(['author', 'genre'])->paginate(15);
+        $books = Book::with(['author', 'genre'])->orderBy('title')->paginate(15);
         return view('books.index', compact('books'));
     }
 
@@ -34,7 +34,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author_id' => 'required|exists:authors,id',
+            'genre_id' => 'required|exists:genres,id',
+        ]);
+
+        Book::create($validated);
+
+        return redirect()->route('books.index')->with('success', 'Book added successfully!');
     }
 
     /**
@@ -50,7 +58,11 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $authors = Author::all();
+        $genres = Genre::all();
+
+        return view('books.edit', compact('book', 'authors', 'genres'));
     }
 
     /**
@@ -58,7 +70,16 @@ class BookController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'author_id' => 'required|exists:authors,id',
+            'genre_id' => 'required|exists:genres,id',
+        ]);
+
+        $book = Book::findOrFail($id);
+        $book->update($validated);
+
+        return redirect()->route('books.index')->with('success', 'Book updated successfully!');
     }
 
     /**
@@ -66,6 +87,9 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('books.index')->with('success', 'Book deleted successfully!');
     }
 }

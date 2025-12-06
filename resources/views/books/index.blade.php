@@ -23,7 +23,13 @@
                 <td class="genre_column">{{ $book->genre->name }}</td>
                 <td class="action_column">
                     <a class="edit" href="{{ route('books.edit', $book) }}"><i class="bi bi-pencil-fill"></i></a>
-                    <a class="delete" href="{{ route('books.destroy', $book) }}"><i class="bi bi-trash3-fill"></i></a>
+                    <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete" style="background:none;border:none;padding:0;">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach
