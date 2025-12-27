@@ -112,6 +112,12 @@ a {
 
 /* main content area css */
 
+.alert {
+    z-index: 1050; 
+    min-width: 300px; 
+    max-width: 90vw;
+}
+
 .app-container {
     display: flex;
     min-height: 100vh;

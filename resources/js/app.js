@@ -40,8 +40,18 @@ document.querySelectorAll('.menu-item').forEach(item => {
   if (item.classList.contains('active')) {
     icon.classList.remove('bi-chevron-right');
     icon.classList.add('bi-chevron-down');
-  } else {
-    icon.classList.remove('bi-chevron-down');
-    icon.classList.add('bi-chevron-right');
+  }
+});
+
+// Auto-dismiss Bootstrap alert after 3 seconds
+document.addEventListener('DOMContentLoaded', function() {
+  const alert = document.querySelector('.alert-dismissible');
+  if (alert) {
+    setTimeout(() => {
+      // Use Bootstrap's alert close if available
+      const closeBtn = alert.querySelector('.btn-close');
+      if (closeBtn) closeBtn.click();
+      else alert.remove();
+    }, 3000);
   }
 });
