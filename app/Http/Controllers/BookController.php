@@ -15,6 +15,7 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::with(['author', 'genre'])->orderBy('title')->paginate(15);
+        
         return view('books.index', compact('books'));
     }
 
@@ -50,7 +51,9 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = Book::with(['author', 'genre'])->findOrFail($id);
+
+        return view('books.show', compact('book'));
     }
 
     /**

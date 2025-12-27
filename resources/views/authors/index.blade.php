@@ -16,7 +16,7 @@
         <tbody>
             @foreach($authors as $author)
             <tr>
-                <td class="title_column">{{ $author->name }}</td>
+                <td class="title_column"> <a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a> </td>
                 <td class="action_column">
                     <a class="edit" href="{{ route('authors.edit', $author) }}"><i class="bi bi-pencil-fill"></i></a>
                     <form action="{{ route('authors.destroy', $author) }}" method="POST" style="display:inline;">
@@ -37,4 +37,5 @@
             {{ $authors->links('pagination::bootstrap-5') }}
         </div>
     </div>
+    
 @endsection

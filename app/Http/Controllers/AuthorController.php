@@ -30,7 +30,13 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Author::create($validated);
+
+        return redirect()->route('authors.index')->with('success', 'Author added successfully!');
     }
 
     /**
@@ -38,7 +44,9 @@ class AuthorController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $author = Author::findOrFail($id);
+
+        return view('authors.show', compact('author'));
     }
 
     /**
@@ -46,7 +54,9 @@ class AuthorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $author = Author::findOrFail($id);
+        
+        return view('authors.edit', compact('author'));
     }
 
     /**
@@ -54,7 +64,14 @@ class AuthorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $author = Author::findOrFail($id);
+        $author->update($validated);
+
+        return redirect()->route('authors.index')->with('success', 'Author updated successfully!');
     }
 
     /**
@@ -62,6 +79,9 @@ class AuthorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $author = Author::findOrFail($id);
+        $author->delete();
+
+        return redirect()->route('authors.index')->with('success', 'Author deleted successfully!');
     }
 }

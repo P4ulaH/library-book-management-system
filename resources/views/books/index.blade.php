@@ -12,15 +12,27 @@
 
         <thead>
             <tr>
-                <th>Book title</th> <th>Author</th>     <th>Genre</th>      <th>Actions</th>
+                <th>Book title</th> <th>Author</th> <th>Genre</th> <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach($books as $book)
             <tr>
-                <td class="title_column">{{ $book->title }}</td>
-                <td class="author_column">{{ $book->author->name }}</td>
-                <td class="genre_column">{{ $book->genre->name }}</td>
+                <td class="title_column"> <a href="{{ route('books.show', $book) }}">{{ $book->title }}</a> </td>
+                <td class="author_column">
+                    @if($book->author_id === null)
+                        <span class="deleted">Author deleted</span>
+                    @else
+                        {{ $book->author->name }}
+                    @endif
+                </td>
+                <td class="genre_column">
+                    @if($book->genre_id === null)
+                        <span class="deleted">Genre deleted</span>
+                    @else
+                        {{ $book->genre->name }}
+                    @endif
+                </td>
                 <td class="action_column">
                     <a class="edit" href="{{ route('books.edit', $book) }}"><i class="bi bi-pencil-fill"></i></a>
                     <form action="{{ route('books.destroy', $book) }}" method="POST" style="display:inline;">

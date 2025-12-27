@@ -13,9 +13,13 @@ class Book extends Model
     protected $fillable = ['title', 'author_id', 'genre_id'];
 
     public function author(){
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(Author::class)->withDefault([
+            'name' => 'Author deleted',
+        ]);
     }
     public function genre(){
-        return $this->belongsTo(Genre::class);
+        return $this->belongsTo(Genre::class)->withDefault([
+            'name' => 'Genre deleted',
+        ]);
     }
 }
