@@ -18,7 +18,7 @@
         <tbody>
             @foreach($books as $book)
             <tr>
-                <td class="title_column"> <a href="{{ route('books.show', $book) }}">{{ $book->title }}</a> </td>
+                <td class="title_column"><a href="{{ route('books.show', $book) }}">{{ $book->title }}</a></td>
                 <td class="author_column">
                     @if($book->author_id === null)
                         <span class="deleted">Author deleted</span>
