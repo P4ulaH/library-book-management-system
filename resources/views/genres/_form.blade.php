@@ -7,7 +7,7 @@
     <section class="input_fields">
         <div class="input_group">
             <label for="name">Genre Name:</label>
-            <input type="text" name="name" value="{{ old('name', $genre->name ?? '') }}" required>
+            <input class="main-input-field" type="text" name="name" value="{{ old('name', $genre->name ?? '') }}" required>
         </div>
 
 
