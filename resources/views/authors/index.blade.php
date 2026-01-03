@@ -14,21 +14,27 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($authors as $author)
-            <tr>
-                <td class="title_column"><a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a></td>
-                <td class="action_column">
-                    <a class="edit" href="{{ route('authors.edit', $author) }}"><i class="bi bi-pencil-fill"></i></a>
-                    <form action="{{ route('authors.destroy', $author) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete" style="background:none;border:none;padding:0;">
-                            <i class="bi bi-trash3-fill"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
+            @if($authors->isEmpty())
+                <tr>
+                    <td colspan="2" class="deleted">No authors yet.</td>
+                </tr>
+            @else
+                @foreach($authors as $author)
+                <tr>
+                    <td class="title_column"><a href="{{ route('authors.show', $author) }}">{{ $author->name }}</a></td>
+                    <td class="action_column">
+                        <a class="edit" href="{{ route('authors.edit', $author) }}"><i class="bi bi-pencil-fill"></i></a>
+                        <form action="{{ route('authors.destroy', $author) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete" style="background:none;border:none;padding:0;">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            @endif
         </tbody>
     </table>
 

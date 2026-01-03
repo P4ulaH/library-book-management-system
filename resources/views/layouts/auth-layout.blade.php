@@ -9,6 +9,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body class="auth-body">
+    <nav class="auth-nav">
+        <a class="nav-button" href="{{ route('login') }}">Log in</a>
+        <a class="nav-button" href="{{ route('register') }}">Register</a>
+    </nav>
 
     <main class="auth-content">
         @if (session('success'))

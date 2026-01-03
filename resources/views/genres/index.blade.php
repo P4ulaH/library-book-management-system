@@ -14,21 +14,27 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($genres as $genre)
-            <tr>
-                <td class="title_column"><a href="{{ route('genres.show', $genre) }}">{{ $genre->name }}</a></td>
-                <td class="action_column">
-                    <a class="edit" href="{{ route('genres.edit', $genre) }}"><i class="bi bi-pencil-fill"></i></a>
-                    <form action="{{ route('genres.destroy', $genre) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete" style="background:none;border:none;padding:0;">
-                            <i class="bi bi-trash3-fill"></i>
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
+            @if($genres->isEmpty())
+                <tr>
+                    <td colspan="2" class="deleted">No genres yet.</td>
+                </tr>
+            @else
+                @foreach($genres as $genre)
+                <tr>
+                    <td class="title_column"><a href="{{ route('genres.show', $genre) }}">{{ $genre->name }}</a></td>
+                    <td class="action_column">
+                        <a class="edit" href="{{ route('genres.edit', $genre) }}"><i class="bi bi-pencil-fill"></i></a>
+                        <form action="{{ route('genres.destroy', $genre) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete" style="background:none;border:none;padding:0;">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            @endif
         </tbody>
     </table>
 

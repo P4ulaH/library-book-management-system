@@ -15,13 +15,22 @@
         @include('components.aside')
 
         <main class="main-content">
+            <nav>
+                <a class="nav-button-main" href="{{ route('logout') }}">Log out</a>
+            </nav>
+
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4" role="alert" style="alert">
                     {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            @yield('content')
+
+            <div class="page-content">
+                @yield('content')
+            </div>
+            
+
         </main>
 
     </div>

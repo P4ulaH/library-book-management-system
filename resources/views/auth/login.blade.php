@@ -3,10 +3,6 @@
 @section('title', 'Login')
 
 @section('content')
-    <nav>
-        <a class="nav-button" href="{{ route('login') }}">Log in</a>
-        <a class="nav-button" href="{{ route('register') }}">Register</a>
-    </nav>
 
     <div class="center-container">
         <div class="main-section">
