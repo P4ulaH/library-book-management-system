@@ -43,15 +43,25 @@ document.querySelectorAll('.menu-item').forEach(item => {
   }
 });
 
-// Auto-dismiss Bootstrap alert after 3 seconds
+// Auto-dismiss Bootstrap alerts with different timings
 document.addEventListener('DOMContentLoaded', function() {
-  const alert = document.querySelector('.alert-dismissible');
-  if (alert) {
+  // Success alerts - dismiss after 3 seconds
+  const successAlert = document.querySelector('.alert-success.alert-dismissible');
+  if (successAlert) {
     setTimeout(() => {
-      // Use Bootstrap's alert close if available
-      const closeBtn = alert.querySelector('.btn-close');
+      const closeBtn = successAlert.querySelector('.btn-close');
       if (closeBtn) closeBtn.click();
-      else alert.remove();
+      else successAlert.remove();
     }, 3000);
+  }
+
+  // Error/danger alerts - dismiss after 10 seconds
+  const errorAlert = document.querySelector('.alert-danger.alert-dismissible');
+  if (errorAlert) {
+    setTimeout(() => {
+      const closeBtn = errorAlert.querySelector('.btn-close');
+      if (closeBtn) closeBtn.click();
+      else errorAlert.remove();
+    }, 10000);
   }
 });

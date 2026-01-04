@@ -131,14 +131,11 @@ tr{
     width: 80px;
     min-width: 70px;
     max-width: 100px;
-
 }
 
 .action_column {
     text-align: center;
 }
-
-
 
 table th {
     font-size: 1.5rem;
@@ -213,7 +210,7 @@ table thead th {
 }
 
 .deleted {
-    color: rgb(218, 10, 10);
+    color: rgb(218, 10, 10) !important;
     font-style: italic;
     list-style: none;
 }
