@@ -154,22 +154,6 @@ table tr td a {
     margin: 10px;
 }
 
-.nav-button-main {
-    text-decoration: none;
-    background-color: #E6E6E6;
-    color: #565656;
-    margin: 1rem 1.5rem;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s, transform 0.2s;
-    float: right;
-    margin-bottom: 1rem;
-}
-
-.nav-button-main:hover {
-    background-color: #dddddd;
-    transform: scale(1.05);
-}
 
 .edit {
     color: rgb(58, 163, 2);
@@ -252,6 +236,18 @@ label {
     border: 10px solid #E6E6E6;
     border-radius: 4px;
     height: 3rem;
+}
+
+.nav-button-main {
+    text-decoration: none;
+    background-color: #E6E6E6 !important;
+    color: #565656 !important;
+    margin: 1rem 1.5rem;
+    float: right;
+}
+
+.nav-button-main:hover {
+    background-color: #dddddd !important;
 }
 
 button[type="submit"], .edit-button{

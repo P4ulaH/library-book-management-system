@@ -16,7 +16,10 @@
 
         <main class="main-content">
             <nav>
-                <a class="nav-button-main" href="{{ route('logout') }}">Log out</a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="nav-button-main">Log out</button>
+                </form>
             </nav>
 
             @if (session('success'))
