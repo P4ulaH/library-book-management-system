@@ -9,13 +9,17 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-
+    @auth
     <div class="app-container">
 
         @include('components.aside')
 
         <main class="main-content">
-            <nav>
+            <nav class="main-nav">
+                <span class="nav-username">
+                    Hi, {{ Auth::user()->username }}!
+                </span>
+
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit" class="nav-button-main">Log out</button>
@@ -38,5 +42,12 @@
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    @endauth
+
+    @guest
+        <script>
+            window.location.href = "{{ route('login') }}";
+        </script>
+    @endguest
 </body>
 </html>
